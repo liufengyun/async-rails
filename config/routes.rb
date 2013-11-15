@@ -56,7 +56,9 @@ AsyncRails3::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
 
   # mount async sinatra app (in metal folder)
-  match '/twitter', :to => Twitter
+  mount Twitter => '/twitter'
 
-  match ':controller(/:action(/:id(.:format)))'
+  resources :widgets do
+    get :http
+  end
 end
